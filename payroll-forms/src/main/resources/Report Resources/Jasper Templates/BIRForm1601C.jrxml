@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-06-01T12:29:00 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BIRForm1601C" pageWidth="612" pageHeight="1008" columnWidth="608" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="fce963fa-af4f-4f5e-90a4-bec20175a0b0">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="493"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="493"/>
+	<subDataset name="Empty Dataset1" uuid="24f5da5a-fd3a-4c47-9a5f-2e1a098ba2ff"/>
+	<parameter name="otherInfo" class="java.util.Map"/>
+	<parameter name="employerInfo" class="com.svi.payroll.report.objects.Employer"/>
+	<parameter name="taxComputation" class="com.svi.payroll.report.objects.TaxComputation"/>
+	<parameter name="paymentDetails" class="java.util.Map"/>
+	<parameter name="cashPayment" class="com.svi.payroll.report.objects.PaymentDetail">
+		<defaultValueExpression><![CDATA[$P{paymentDetails}.get(com.svi.payroll.report.objects.PaymentDetail.TYPE.CASH)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="checkPayment" class="com.svi.payroll.report.objects.PaymentDetail">
+		<defaultValueExpression><![CDATA[$P{paymentDetails}.get(com.svi.payroll.report.objects.PaymentDetail.TYPE.CHECK)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="othersPayment" class="com.svi.payroll.report.objects.PaymentDetail">
+		<defaultValueExpression><![CDATA[$P{paymentDetails}.get(com.svi.payroll.report.objects.PaymentDetail.TYPE.OTHERS)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="com.svi.payroll.report.objects.Employer"/>
+	<parameter name="formImage" class="java.awt.image.BufferedImage"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="lineOfBusiness" class="java.lang.String">
+		<fieldDescription><![CDATA[lineOfBusiness]]></fieldDescription>
+	</field>
+	<field name="zipCode" class="java.lang.String">
+		<fieldDescription><![CDATA[zipCode]]></fieldDescription>
+	</field>
+	<field name="taxAdjustments" class="java.util.List">
+		<fieldDescription><![CDATA[taxAdjustments]]></fieldDescription>
+	</field>
+	<field name="nonTaxableMWES" class="java.lang.Double">
+		<fieldDescription><![CDATA[nonTaxableMWES]]></fieldDescription>
+	</field>
+	<field name="requiredTaxWithheld" class="java.lang.Double">
+		<fieldDescription><![CDATA[requiredTaxWithheld]]></fieldDescription>
+	</field>
+	<field name="tin3" class="java.lang.String">
+		<fieldDescription><![CDATA[tin3]]></fieldDescription>
+	</field>
+	<field name="tin4" class="java.lang.String">
+		<fieldDescription><![CDATA[tin4]]></fieldDescription>
+	</field>
+	<field name="tin1" class="java.lang.String">
+		<fieldDescription><![CDATA[tin1]]></fieldDescription>
+	</field>
+	<field name="checkPaymentAmount" class="java.lang.Double">
+		<fieldDescription><![CDATA[checkPaymentAmount]]></fieldDescription>
+	</field>
+	<field name="tin2" class="java.lang.String">
+		<fieldDescription><![CDATA[tin2]]></fieldDescription>
+	</field>
+	<field name="adjustmentSectionA" class="java.lang.Double">
+		<fieldDescription><![CDATA[adjustmentSectionA]]></fieldDescription>
+	</field>
+	<field name="datePaid2" class="java.lang.String">
+		<fieldDescription><![CDATA[datePaid2]]></fieldDescription>
+	</field>
+	<field name="totalTaxPayment" class="java.lang.Double">
+		<fieldDescription><![CDATA[totalTaxPayment]]></fieldDescription>
+	</field>
+	<field name="datePaid3" class="java.lang.String">
+		<fieldDescription><![CDATA[datePaid3]]></fieldDescription>
+	</field>
+	<field name="amendedReturn" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[amendedReturn]]></fieldDescription>
+	</field>
+	<field name="datePaid1" class="java.lang.String">
+		<fieldDescription><![CDATA[datePaid1]]></fieldDescription>
+	</field>
+	<field name="taxDue1" class="java.lang.Double">
+		<fieldDescription><![CDATA[taxDue1]]></fieldDescription>
+	</field>
+	<field name="othersPaymentNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[othersPaymentNumber]]></fieldDescription>
+	</field>
+	<field name="taxDue2" class="java.lang.Double">
+		<fieldDescription><![CDATA[taxDue2]]></fieldDescription>
+	</field>
+	<field name="taxDue3" class="java.lang.Double">
+		<fieldDescription><![CDATA[taxDue3]]></fieldDescription>
+	</field>
+	<field name="interestPenalty" class="java.lang.Double">
+		<fieldDescription><![CDATA[interestPenalty]]></fieldDescription>
+	</field>
+	<field name="cashPaymentAgency" class="java.lang.String">
+		<fieldDescription><![CDATA[cashPaymentAgency]]></fieldDescription>
+	</field>
+	<field name="checkPaymentDate" class="java.lang.String">
+		<fieldDescription><![CDATA[checkPaymentDate]]></fieldDescription>
+	</field>
+	<field name="specify" class="java.lang.String">
+		<fieldDescription><![CDATA[specify]]></fieldDescription>
+	</field>
+	<field name="agentName" class="java.lang.String">
+		<fieldDescription><![CDATA[agentName]]></fieldDescription>
+	</field>
+	<field name="anyTaxWithheld" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[anyTaxWithheld]]></fieldDescription>
+	</field>
+	<field name="checkPaymentNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[checkPaymentNumber]]></fieldDescription>
+	</field>
+	<field name="previousMonth1" class="java.lang.String">
+		<fieldDescription><![CDATA[previousMonth1]]></fieldDescription>
+	</field>
+	<field name="previousMonth2" class="java.lang.String">
+		<fieldDescription><![CDATA[previousMonth2]]></fieldDescription>
+	</field>
+	<field name="previousMonth3" class="java.lang.String">
+		<fieldDescription><![CDATA[previousMonth3]]></fieldDescription>
+	</field>
+	<field name="forTheYear" class="java.lang.String">
+		<fieldDescription><![CDATA[forTheYear]]></fieldDescription>
+	</field>
+	<field name="tinNum" class="java.lang.String">
+		<fieldDescription><![CDATA[tinNum]]></fieldDescription>
+	</field>
+	<field name="totalPenalty" class="java.lang.Double">
+		<fieldDescription><![CDATA[totalPenalty]]></fieldDescription>
+	</field>
+	<field name="private" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[private]]></fieldDescription>
+	</field>
+	<field name="nonTaxableHONHPay" class="java.lang.Double">
+		<fieldDescription><![CDATA[nonTaxableHONHPay]]></fieldDescription>
+	</field>
+	<field name="adjustmentFromCurrentYear2" class="java.lang.Double">
+		<fieldDescription><![CDATA[adjustmentFromCurrentYear2]]></fieldDescription>
+	</field>
+	<field name="adjustmentFromCurrentYear1" class="java.lang.Double">
+		<fieldDescription><![CDATA[adjustmentFromCurrentYear1]]></fieldDescription>
+	</field>
+	<field name="surchargePenalty" class="java.lang.Double">
+		<fieldDescription><![CDATA[surchargePenalty]]></fieldDescription>
+	</field>
+	<field name="adjustmentFromCurrentYear3" class="java.lang.Double">
+		<fieldDescription><![CDATA[adjustmentFromCurrentYear3]]></fieldDescription>
+	</field>
+	<field name="bankValidationNum1" class="java.lang.String">
+		<fieldDescription><![CDATA[bankValidationNum1]]></fieldDescription>
+	</field>
+	<field name="bankValidationNum2" class="java.lang.String">
+		<fieldDescription><![CDATA[bankValidationNum2]]></fieldDescription>
+	</field>
+	<field name="othersPaymentAgency" class="java.lang.String">
+		<fieldDescription><![CDATA[othersPaymentAgency]]></fieldDescription>
+	</field>
+	<field name="bankValidationNum3" class="java.lang.String">
+		<fieldDescription><![CDATA[bankValidationNum3]]></fieldDescription>
+	</field>
+	<field name="telNum" class="java.lang.String">
+		<fieldDescription><![CDATA[telNum]]></fieldDescription>
+	</field>
+	<field name="taxStillDue" class="java.lang.Double">
+		<fieldDescription><![CDATA[taxStillDue]]></fieldDescription>
+	</field>
+	<field name="cashPaymentDate" class="java.lang.String">
+		<fieldDescription><![CDATA[cashPaymentDate]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="numSheetsAttached" class="java.lang.String">
+		<fieldDescription><![CDATA[numSheetsAttached]]></fieldDescription>
+	</field>
+	<field name="forTheMonth" class="java.lang.String">
+		<fieldDescription><![CDATA[forTheMonth]]></fieldDescription>
+	</field>
+	<field name="nonTaxable1Others" class="java.lang.Double">
+		<fieldDescription><![CDATA[nonTaxable1Others]]></fieldDescription>
+	</field>
+	<field name="adjustmentFromYearToPrevYear2" class="java.lang.Double">
+		<fieldDescription><![CDATA[adjustmentFromYearToPrevYear2]]></fieldDescription>
+	</field>
+	<field name="adjustmentFromYearToPrevYear1" class="java.lang.Double">
+		<fieldDescription><![CDATA[adjustmentFromYearToPrevYear1]]></fieldDescription>
+	</field>
+	<field name="otherPaymentsMade" class="java.lang.Double">
+		<fieldDescription><![CDATA[otherPaymentsMade]]></fieldDescription>
+	</field>
+	<field name="address" class="java.lang.String">
+		<fieldDescription><![CDATA[address]]></fieldDescription>
+	</field>
+	<field name="taxPaid3" class="java.lang.Double">
+		<fieldDescription><![CDATA[taxPaid3]]></fieldDescription>
+	</field>
+	<field name="bankCode1" class="java.lang.String">
+		<fieldDescription><![CDATA[bankCode1]]></fieldDescription>
+	</field>
+	<field name="taxPaid2" class="java.lang.Double">
+		<fieldDescription><![CDATA[taxPaid2]]></fieldDescription>
+	</field>
+	<field name="bankCode2" class="java.lang.String">
+		<fieldDescription><![CDATA[bankCode2]]></fieldDescription>
+	</field>
+	<field name="taxPaid1" class="java.lang.Double">
+		<fieldDescription><![CDATA[taxPaid1]]></fieldDescription>
+	</field>
+	<field name="bankCode3" class="java.lang.String">
+		<fieldDescription><![CDATA[bankCode3]]></fieldDescription>
+	</field>
+	<field name="payeesAvailingTax" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[payeesAvailingTax]]></fieldDescription>
+	</field>
+	<field name="adjustmentFromYearToPrevYear3" class="java.lang.Double">
+		<fieldDescription><![CDATA[adjustmentFromYearToPrevYear3]]></fieldDescription>
+	</field>
+	<field name="othersPaymentAmount" class="java.lang.Double">
+		<fieldDescription><![CDATA[othersPaymentAmount]]></fieldDescription>
+	</field>
+	<field name="othersPaymentDate" class="java.lang.String">
+		<fieldDescription><![CDATA[othersPaymentDate]]></fieldDescription>
+	</field>
+	<field name="cashPaymentNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[cashPaymentNumber]]></fieldDescription>
+	</field>
+	<field name="rdoCode" class="java.lang.String">
+		<fieldDescription><![CDATA[rdoCode]]></fieldDescription>
+	</field>
+	<field name="compromisePenalty" class="java.lang.Double">
+		<fieldDescription><![CDATA[compromisePenalty]]></fieldDescription>
+	</field>
+	<field name="taxRemittedInReturn" class="java.lang.Double">
+		<fieldDescription><![CDATA[taxRemittedInReturn]]></fieldDescription>
+	</field>
+	<field name="taxableCompensation" class="java.lang.Double">
+		<fieldDescription><![CDATA[taxableCompensation]]></fieldDescription>
+	</field>
+	<field name="cashPaymentAmount" class="java.lang.Double">
+		<fieldDescription><![CDATA[cashPaymentAmount]]></fieldDescription>
+	</field>
+	<field name="totalAmtCompensation" class="java.lang.Double">
+		<fieldDescription><![CDATA[totalAmtCompensation]]></fieldDescription>
+	</field>
+	<field name="totalTaxStillDue" class="java.lang.Double">
+		<fieldDescription><![CDATA[totalTaxStillDue]]></fieldDescription>
+	</field>
+	<field name="checkPaymentAgency" class="java.lang.String">
+		<fieldDescription><![CDATA[checkPaymentAgency]]></fieldDescription>
+	</field>
+	<field name="requiredTaxWithheldForRemittance" class="java.lang.Double">
+		<fieldDescription><![CDATA[requiredTaxWithheldForRemittance]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="1004">
+			<image scaleImage="RealSize" vAlign="Top">
+				<reportElement key="" mode="Opaque" x="0" y="0" width="604" height="1004" uuid="cfbfedd4-630e-4522-b0be-ba20394597ca">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{formImage}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="126" y="148" width="85" height="20" uuid="d10b01bf-c587-4018-86bc-8eb2c7300140"/>
+				<textElement textAlignment="Left">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("forTheMonth").toString().replace("","   ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="250" y="147" width="20" height="20" uuid="0cce9101-fbf4-4faa-a3f7-d7522038f56e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{otherInfo}.get("isAmendedReturn").toString(),"true")? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="294" y="148" width="20" height="20" uuid="ee4f6896-ce20-43c1-a759-57054c621b7a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{otherInfo}.get("isAmendedReturn").toString(),"false")? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="476" y="148" width="20" height="20" uuid="27993a0d-96d7-4d29-a5cd-6347c20893af"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{otherInfo}.get("anyTaxWithheld").toString(),"true") ? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="520" y="148" width="20" height="20" uuid="9e16b11c-8b71-429d-b636-9ec630cef0b6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{otherInfo}.get("anyTaxWithheld").toString(),"false") ? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="55" y="267" width="20" height="20" uuid="8f7d1149-f535-4fe8-8b06-770395c88ab5"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{employerInfo}.getCategory().toString().toUpperCase(),"PRIVATE")? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="100" y="267" width="20" height="20" uuid="2f6e8613-ae44-42fe-8b5e-ec8576d32b48"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{employerInfo}.getCategory().toString().toUpperCase(),"GOVERNMENT")? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="183" y="274" width="20" height="20" uuid="f981f9d9-6136-4c4c-9bb0-baff59a5434a"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getPayeesAvailingTax().booleanValue()? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="229" y="274" width="20" height="20" uuid="f6ba2507-e4af-4423-ba44-e9f733d26094">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getPayeesAvailingTax().booleanValue()? "":"X"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="325" y="270" width="150" height="16" uuid="fd10c214-46be-4279-b5c0-5bdc4c3dd31b">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getPayeesAvailingTax().booleanValue()? $P{employerInfo}.getSpecify():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="413" y="146" width="38" height="20" uuid="d80acb4b-8d6e-437e-8265-01cc110f8ca1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("numSheetsAttached").toString().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="450" y="179" width="115" height="20" uuid="c07c149d-ad7c-40db-a354-5734063047f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getLineOfBusiness()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="482" y="207" width="83" height="20" uuid="fe7129ae-af5d-492a-96b5-64b355db0afb">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getTelNum().replace(""," ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="506" y="237" width="59" height="20" uuid="e48b3928-7106-4b7f-a745-7713089ed8ab">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getRegisteredAddZipCode().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="64" y="208" width="412" height="20" uuid="6b43d3a3-f904-46af-9b8b-ff656d6c4739">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="64" y="237" width="412" height="20" uuid="93a62f8d-e187-4e3e-a09c-1b3938d4aaa9">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getRegisteredAdd()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="326" y="179" width="38" height="20" uuid="45177771-beaa-469d-ab34-a1192029d9c0">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getRdoCode().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="63" y="178" width="38" height="20" uuid="ac5ed147-9751-4672-bde3-0a1f04e4c57d">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getTin())>2?
+$P{employerInfo}.getTin().substring(0,3).replace("","  ").trim():
+(LEN($P{employerInfo}.getTin())>0? ($P{employerInfo}.getTin().substring(0,LEN($P{employerInfo}.getTin())).replace("","  ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="114" y="178" width="38" height="20" uuid="4b81d6af-d679-47a0-988c-eeab3cde6ea5">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getTin())>5?
+$P{employerInfo}.getTin().substring(3,6).replace("","  ").trim():
+(LEN($P{employerInfo}.getTin())>3? ($P{employerInfo}.getTin().substring(3,LEN($P{employerInfo}.getTin())).replace("","  ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="164" y="178" width="38" height="20" uuid="4ea4eaef-0a4d-4934-be56-99d51fa10266">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getTin())>8?
+$P{employerInfo}.getTin().substring(6,9).replace("","  ").trim():
+(LEN($P{employerInfo}.getTin())>6?  $P{employerInfo}.getTin().substring(6,LEN($P{employerInfo}.getTin())).replace("","  ").trim():"" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="215" y="178" width="48" height="20" uuid="961d154a-3951-4ade-b539-182606e636f8">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getTin())>9?
+$P{employerInfo}.getTin().substring(9,LEN($P{employerInfo}.getTin())).replace("","  ").trim():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="250" y="311" width="140" height="16" uuid="219872d7-113a-46b5-9d2a-a5175a0a8cf1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTotalAmtCompensation() == 0.0? "":$P{taxComputation}.getTotalAmtCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="250" y="330" width="140" height="16" uuid="95669617-7a87-4339-87ea-f30a26548071">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getNonTaxableMWES()== 0.0? "":$P{taxComputation}.getNonTaxableMWES()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="250" y="351" width="140" height="16" uuid="26a6ad72-e8eb-4701-930a-411a8f68b3ae">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getNonTaxableHONHPay()== 0.0? "":$P{taxComputation}.getNonTaxableHONHPay()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="250" y="371" width="140" height="16" uuid="838445e3-bbcb-40db-9f19-69dd28e61b5c">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getNonTaxableOthers()== 0.0? "":$P{taxComputation}.getNonTaxableOthers()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="250" y="391" width="140" height="16" uuid="1701896f-dc6d-458c-aad6-190dc2bb3603">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxableCompensation()== 0.0? "":$P{taxComputation}.getTaxableCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="423" y="406" width="135" height="16" uuid="e3d1ac9e-97d5-4c26-a87e-c157deeb2121">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getRequiredTaxWithheld()== 0.0? "":$P{taxComputation}.getRequiredTaxWithheld()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="423" y="421" width="135" height="16" uuid="9630d3fe-458f-453b-a391-e3d7f3a1fdbe">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTotalAdjustments()== 0.0? "":$P{taxComputation}.getTotalAdjustments()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="423" y="437" width="135" height="16" uuid="b5738295-0625-4932-beae-2e2a27b18ab3">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getRequiredTaxWithheldForRemittance()== 0.0? "":$P{taxComputation}.getRequiredTaxWithheldForRemittance()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="250" y="451" width="140" height="16" uuid="e6f62c47-97e5-49e0-9305-5b83d28a41b3">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxRemittedInReturn()== 0.0? "":$P{taxComputation}.getTaxRemittedInReturn()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="250" y="470" width="140" height="16" uuid="f7d1c48c-7f5e-4a6f-9bf9-cdfecc91abc6">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getOtherPaymentsMade()== 0.0? "":$P{taxComputation}.getOtherPaymentsMade()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="423" y="490" width="135" height="16" uuid="a263a160-139b-4023-b9fa-af89262db2ea">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTotalTaxPayment()== 0.0? "":$P{taxComputation}.getTotalTaxPayment()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="423" y="511" width="135" height="16" uuid="dd7ecf04-9079-47d0-a29b-2c9def8ce921">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxStillDue()== 0.0? "":$P{taxComputation}.getTaxStillDue()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="69" y="542" width="88" height="16" uuid="8c429fb0-907f-4198-84ff-2b9650669739">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getSurchargePenalty()== 0.0? "":$P{taxComputation}.getSurchargePenalty()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="178" y="542" width="96" height="16" uuid="5aca46f4-7b74-41ea-964e-4b85fa3e51d0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getInterestPenalty()== 0.0? "":$P{taxComputation}.getInterestPenalty()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="302" y="542" width="88" height="16" uuid="0e6bf8fe-2ff8-41ef-8405-d9388e5d73b2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getCompromisePenalty()== 0.0? "":$P{taxComputation}.getCompromisePenalty()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="423" y="542" width="135" height="16" uuid="e7a8420f-ba55-488a-b92e-cf77c921d6a1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTotalPenalty()== 0.0? "":$P{taxComputation}.getTotalPenalty()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="422" y="559" width="135" height="16" uuid="555544be-0113-4423-8c31-bd702fb1ea4b">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTotalTaxStillDue()== 0.0? "":$P{taxComputation}.getTotalTaxStillDue()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="338" y="710" width="160" height="16" uuid="371c07e0-106b-4bd7-88b1-74ed143fa58c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTotalAdjustments()== 0.0? "":$P{taxComputation}.getTotalAdjustments()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="98" y="843" width="49" height="16" uuid="6b9be379-fc9b-458e-9a8c-b65a0f3bda94">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cashPayment}.getDraweeBankOrAgency()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="163" y="843" width="63" height="16" uuid="5f74d74b-35fa-438b-8a9d-1baefa3be999"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cashPayment}.getNumber()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="247" y="843" width="80" height="16" uuid="799d2fb1-5419-4784-af1b-a8f54dcb1e2c">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cashPayment}.getDate().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="342" y="844" width="130" height="16" uuid="932cf085-fa72-4cba-b5da-d60f97347c47">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cashPayment}.getAmount()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="98" y="861" width="49" height="16" uuid="97321a4d-305a-42bc-90ba-1122b32bd748">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{checkPayment}.getDraweeBankOrAgency()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="98" y="878" width="49" height="16" uuid="b23d5954-eebf-4ec9-91c3-c95eb6108966">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{othersPayment}.getDraweeBankOrAgency()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="163" y="860" width="63" height="16" uuid="fdc65f57-4ecb-4c03-8db8-0e0237b161a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{checkPayment}.getNumber()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="163" y="878" width="63" height="16" uuid="31bc4f10-17bc-421f-9de2-3aa86b256536"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{othersPayment}.getNumber()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="247" y="861" width="80" height="16" uuid="24026bce-79e2-4b84-9f51-79a4de47e160"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{checkPayment}.getDate().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="247" y="877" width="80" height="16" uuid="d71884ea-8b40-423d-bea2-3d2ab18cde5e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{othersPayment}.getDate().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="342" y="862" width="130" height="16" uuid="0db127d1-ac3d-4d37-af84-c6da0e764dd1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{checkPayment}.getAmount()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="342" y="879" width="130" height="16" uuid="3e0b5cea-50ac-40c5-a7f1-6f685501a746">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{othersPayment}.getAmount()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="47" y="612" width="107" height="12" uuid="02276c8a-9ac5-4e07-a2dc-7d345c9d2373">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 0?    ( LEN($P{taxComputation}.getTaxAdjustments().get(0).getPreviousMonth())>5? $P{taxComputation}.getTaxAdjustments().get(0).getPreviousMonth().substring(0,2)+"              "+$P{taxComputation}.getTaxAdjustments().get(0).getPreviousMonth().substring(2,6):"") : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="165" y="612" width="129" height="12" uuid="889dcffc-7d72-4da0-98dd-38850f1d44cc">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 0? (
+LEN($P{taxComputation}.getTaxAdjustments().get(0).getDatePaid())>7?	$P{taxComputation}.getTaxAdjustments().get(0).getDatePaid().substring(0,2)+"          "+$P{taxComputation}.getTaxAdjustments().get(0).getDatePaid().substring(2,4)+"             "+$P{taxComputation}.getTaxAdjustments().get(0).getDatePaid().substring(4,8):""
+) : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="298" y="611" width="138" height="12" uuid="f690b44c-7a75-45fa-9ff2-3569c04f3d71"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 0? $P{taxComputation}.getTaxAdjustments().get(0).getBankValidationNum():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="438" y="611" width="130" height="12" uuid="1e539fbd-342a-484f-8992-00eda9ecd183">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 0? $P{taxComputation}.getTaxAdjustments().get(0).getBankCode():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="30" y="677" width="126" height="12" uuid="5a1360d1-a45a-4130-a366-078027ac7f63"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 0? $P{taxComputation}.getTaxAdjustments().get(0).getTaxPaid():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="157" y="678" width="138" height="12" uuid="604b9768-bdb4-407b-a6c4-9d5c3d3f5a20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 0? $P{taxComputation}.getTaxAdjustments().get(0).getTaxDue():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="298" y="677" width="138" height="12" uuid="74b67798-fb86-4ea9-9766-7e636b812be8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 0? $P{taxComputation}.getTaxAdjustments().get(0).getAdjustmentFromCurrentYear():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="438" y="677" width="130" height="12" uuid="7ce88ff3-ae5d-442c-872c-a48cf861589e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 0? $P{taxComputation}.getTaxAdjustments().get(0).getAdjustmentFromYearToPrevYear():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="47" y="621" width="107" height="12" uuid="d9d11bbb-73b0-4a7e-a818-47d29b173548">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 1?  ( LEN($P{taxComputation}.getTaxAdjustments().get(1).getPreviousMonth())>5? $P{taxComputation}.getTaxAdjustments().get(1).getPreviousMonth().substring(0,2)+"              "+$P{taxComputation}.getTaxAdjustments().get(1).getPreviousMonth().substring(2,6):"") : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="165" y="621" width="129" height="12" uuid="60e7fbba-58c7-45e8-8792-6da1ca493519">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 1?   (
+LEN($P{taxComputation}.getTaxAdjustments().get(1).getDatePaid())>7? $P{taxComputation}.getTaxAdjustments().get(1).getDatePaid().substring(0,2)+"          "+$P{taxComputation}.getTaxAdjustments().get(1).getDatePaid().substring(2,4)+"             "+$P{taxComputation}.getTaxAdjustments().get(1).getDatePaid().substring(4,8):"") : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="298" y="621" width="138" height="12" uuid="b624396e-3f3e-4fb7-a143-2f32e7149b17"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 1?  $P{taxComputation}.getTaxAdjustments().get(1).getBankValidationNum():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="438" y="621" width="130" height="12" uuid="fd178208-8d80-4471-a4f8-222c6884c4ed">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 1?  $P{taxComputation}.getTaxAdjustments().get(1).getBankCode():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="30" y="689" width="126" height="12" uuid="a960a4c6-8870-4eed-b17b-f814c93a4417"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 1?  $P{taxComputation}.getTaxAdjustments().get(1).getTaxPaid():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="157" y="690" width="138" height="12" uuid="fc5d0091-1556-4fce-b64b-0a77b3f782bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 1?  $P{taxComputation}.getTaxAdjustments().get(1).getTaxDue():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="298" y="689" width="138" height="12" uuid="d6cb1eff-6aea-43f6-beed-e3477b2e12df"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 1?  $P{taxComputation}.getTaxAdjustments().get(1).getAdjustmentFromCurrentYear():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="438" y="689" width="130" height="12" uuid="30fee4e9-2db2-4476-820b-3ae65b6fd90f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 1?  $P{taxComputation}.getTaxAdjustments().get(1).getAdjustmentFromYearToPrevYear():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="47" y="632" width="107" height="12" uuid="73c5397b-03b9-4844-bae8-286129bb911f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 2? ( LEN($P{taxComputation}.getTaxAdjustments().get(2).getPreviousMonth())>5? $P{taxComputation}.getTaxAdjustments().get(2).getPreviousMonth().substring(0,2)+"              "+$P{taxComputation}.getTaxAdjustments().get(2).getPreviousMonth().substring(2,6):"") : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="165" y="632" width="129" height="12" isRemoveLineWhenBlank="true" uuid="d2f1f79e-921c-4c6b-b71b-9185ddde3422">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 2?   (
+LEN($P{taxComputation}.getTaxAdjustments().get(2).getDatePaid())>7? $P{taxComputation}.getTaxAdjustments().get(2).getDatePaid().substring(0,2)+"          "+$P{taxComputation}.getTaxAdjustments().get(2).getDatePaid().substring(2,4)+"             "+$P{taxComputation}.getTaxAdjustments().get(2).getDatePaid().substring(4,8):"") : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="298" y="632" width="138" height="12" uuid="6044eefd-72fa-46af-993d-2b61f9b1153b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 2?  $P{taxComputation}.getTaxAdjustments().get(2).getBankValidationNum():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="438" y="632" width="130" height="12" uuid="9e6cb872-3fd8-4ecf-9d7d-b206299ff37e">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 2?  $P{taxComputation}.getTaxAdjustments().get(2).getBankCode():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="438" y="701" width="130" height="12" uuid="0ec98b79-1b13-4917-aa56-a58b77b9248f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 2?  $P{taxComputation}.getTaxAdjustments().get(2).getAdjustmentFromYearToPrevYear():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="298" y="700" width="138" height="12" uuid="299dda40-f3e9-4d2e-8481-d4fbad476e4a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 2?  $P{taxComputation}.getTaxAdjustments().get(2).getAdjustmentFromCurrentYear():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="157" y="701" width="138" height="12" uuid="288f9ca9-61b7-40fb-b6da-08a59188ab58"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 2?  $P{taxComputation}.getTaxAdjustments().get(2).getTaxDue():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="30" y="700" width="126" height="12" uuid="513c6797-e23a-4f22-843c-b8dea090aaef"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxComputation}.getTaxAdjustments().size() > 2?  $P{taxComputation}.getTaxAdjustments().get(2).getTaxPaid():""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

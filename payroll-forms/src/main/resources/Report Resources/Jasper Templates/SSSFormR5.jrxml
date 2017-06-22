@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-04-11T09:52:30 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SSSFormR5" pageWidth="612" pageHeight="792" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isSummaryWithPageHeaderAndFooter="true" whenResourceMissingType="Error" uuid="39bcba86-7f03-407b-9919-41f9b0f395ec">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Empty Dataset1" uuid="cd9f4ee8-766b-4549-b0a1-442a8dc1882b">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="ssConPenalty" class="java.lang.Double">
+			<fieldDescription><![CDATA[ssConPenalty]]></fieldDescription>
+		</field>
+		<field name="empCompPenalty" class="java.lang.Double">
+			<fieldDescription><![CDATA[empCompPenalty]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="employerInfo" class="com.svi.payroll.report.objects.Employer"/>
+	<parameter name="otherInfo" class="java.util.Map"/>
+	<parameter name="Penalty" class="java.util.List">
+		<defaultValueExpression><![CDATA[$P{penaltyList}.get("PENALTY")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="UnderPayment" class="java.util.List">
+		<defaultValueExpression><![CDATA[$P{penaltyList}.get("UNDER_PAYMENT")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Interest" class="java.util.List">
+		<defaultValueExpression><![CDATA[$P{penaltyList}.get("INTEREST")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paymentDetail" class="java.util.Map"/>
+	<parameter name="cashPayment" class="com.svi.payroll.report.objects.PaymentDetail">
+		<defaultValueExpression><![CDATA[$P{paymentDetail}.get(com.svi.payroll.report.objects.PaymentDetail.TYPE.CASH)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="checkPay" class="com.svi.payroll.report.objects.PaymentDetail">
+		<defaultValueExpression><![CDATA[$P{paymentDetail}.get(com.svi.payroll.report.objects.PaymentDetail.TYPE.CHECK)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="postalPayment" class="com.svi.payroll.report.objects.PaymentDetail">
+		<defaultValueExpression><![CDATA[$P{paymentDetail}.get(com.svi.payroll.report.objects.PaymentDetail.TYPE.POSTAL_MONEY_ORDER)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="penaltyList" class="java.util.Map">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="formImage" class="java.awt.image.BufferedImage"/>
+	<parameter name="blankImage" class="java.awt.image.BufferedImage"/>
+	<parameter name="checkImage" class="java.awt.image.BufferedImage"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="792" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement key="" x="0" y="0" width="612" height="792" isRemoveLineWhenBlank="true" uuid="f8ee48ca-e2a0-4f98-a3d9-e1261774c4e2">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{formImage}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="26" y="183" width="28" height="24" uuid="08874711-b292-47dc-bb00-19147af4f42f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getSssNumber())>1?
+$P{employerInfo}.getSssNumber().substring(0,2).replace("","   ").trim():
+(LEN($P{employerInfo}.getSssNumber())>0?  $P{employerInfo}.getSssNumber().substring(0,LEN($P{employerInfo}.getSssNumber())).replace("","   ").trim():"" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="218" y="180" width="371" height="24" uuid="1f025067-63a8-4c2e-b10d-d0d70ec6a59b"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="none"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="25" y="217" width="175" height="24" uuid="3c099578-1f31-43bf-bcec-fba832408be0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getAddress().getBuildingName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="200" y="217" width="120" height="24" uuid="8181f352-9dbc-4e02-b150-6d0cf7d3a048"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getAddress().getBlockNo()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="320" y="217" width="130" height="24" uuid="56fb17f2-57c5-4370-9168-433ac7e1946e"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getAddress().getStreet()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="450" y="217" width="139" height="24" uuid="cb44ba0f-944f-4d54-991a-587cf573edd7"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getAddress().getBarangay()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="25" y="250" width="85" height="24" uuid="190a50f9-84c6-4e3c-aaf2-05c81db59cfb">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getAddress().getSubdivision()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="250" width="105" height="24" uuid="699de0a4-4e03-4f90-91cb-a1c66381305a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getAddress().getCity()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="215" y="250" width="135" height="24" uuid="d645606c-7f0f-4c25-b95b-775608568972">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getAddress().getProvince()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="350" y="250" width="60" height="24" uuid="efba7f2f-3990-4c4b-8063-0124b961b77a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getRegisteredAddZipCode().replace("", "   ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="410" y="250" width="179" height="24" uuid="d38b2dc7-783a-43db-b990-ca72940af43d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getTin().replace("", "  ")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="22" y="285" width="146" height="24" uuid="af47f57e-d75e-48b8-8131-cb50dd4fb468">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getTelNum().replace("", "  ")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="170" y="286" width="165" height="24" uuid="23e22c76-8e61-47f9-83c8-4a4ca4105f9e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="SansSerif" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getMobileNo().replace("", "  ")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="335" y="286" width="120" height="24" uuid="271cd82f-2e8c-4400-a9e9-553048e36e4e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmailAddress()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="455" y="286" width="134" height="24" uuid="5d2bdb11-42a9-4332-8f84-fc3fabc46db8">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getWebsite()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#" isBlankWhenNull="true">
+				<reportElement x="514" y="375" width="66" height="13" uuid="5ae9f79d-f220-4730-aa18-a392a3a5968f"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{cashPayment} == null? "":$P{cashPayment}.getAmount()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="466" y="440" width="123" height="13" uuid="e04f5e18-60ae-4a9a-87b2-6d9357ef2245"/>
+				<textFieldExpression><![CDATA[$P{checkPay} == null?"":$P{checkPay}.getDate()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="466" y="423" width="123" height="13" uuid="6b363d99-d827-4e1d-8836-11929c88d928"/>
+				<textFieldExpression><![CDATA[$P{checkPay} == null? "":$P{checkPay}.getNumber()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="466" y="456" width="123" height="34" uuid="f80e900e-7f84-4109-8a80-fae4334cda9f"/>
+				<textFieldExpression><![CDATA[$P{checkPay} == null? "":$P{checkPay}.getDraweeBankOrAgency()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#" isBlankWhenNull="true">
+				<reportElement x="513" y="490" width="66" height="13" uuid="e73a4022-0a01-4890-946d-553292fc0d20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("getTotalAmtOfPayment")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="380" y="664" width="119" height="24" uuid="0d649320-79a2-49de-b29b-7bc805b44bc4"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("signatoryName")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="380" y="700" width="119" height="35" uuid="a954e1ab-5021-41f7-b95d-93354894ba07"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("signatoryPosition")]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="390" y="335" width="10" height="10" uuid="85b20681-098a-4fd4-8357-f26063c7db44">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{employerInfo}.getSssCategory().toString() == "BUSINESS"?$P{checkImage}:$P{blankImage}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="483" y="335" width="10" height="10" uuid="8dded0b0-73fd-47a7-9d21-e0c0f9fe82a5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{employerInfo}.getSssCategory().toString()=="HOUSEHOLD"?$P{checkImage}:$P{blankImage}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="390" y="375" width="10" height="10" uuid="d2c970c6-e6c5-40e1-a74d-de9503577b8b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{cashPayment} == null?$P{blankImage}:$P{checkImage}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="390" y="393" width="10" height="10" uuid="9521979e-a5ab-400e-9938-ea47bcbd3729">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{postalPayment}== null?$P{blankImage}:$P{checkImage}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="390" y="409" width="10" height="10" uuid="c5824582-1fcf-4328-b365-6511fd3fd8f9">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{checkPay} == null?$P{blankImage}:$P{checkImage}]]></imageExpression>
+			</image>
+			<textField pattern="#,##0.00#" isBlankWhenNull="true">
+				<reportElement x="514" y="391" width="66" height="13" uuid="fa109637-e1d9-455a-835d-b43e81ba1d26"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{postalPayment}== null?"":$P{postalPayment}.getAmount()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#" isBlankWhenNull="true">
+				<reportElement x="514" y="408" width="66" height="13" uuid="85911b97-a42f-41ac-a982-f18dad8feb9b"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{checkPay}== null?"":$P{checkPay}.getAmount()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="83" y="357" width="45" height="14" uuid="c1951c12-bcf3-487c-bb43-af726a856710">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("January").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="128" y="357" width="87" height="14" uuid="474fc451-4b81-4971-aa28-d2806256b4b7">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("January").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="215" y="357" width="75" height="14" uuid="b5620085-7222-4c0e-b1b2-aeeb6b46a58b">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("January").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="289" y="357" width="90" height="14" uuid="fc180abf-5bcb-4580-9219-f80d65fdba10">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("January").getSsContribution()+$P{employerInfo}.getEmpConList().get("January").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="83" y="374" width="45" height="14" uuid="80819c92-8d30-4c24-a37b-26b30446e25c">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("February").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="128" y="374" width="87" height="14" uuid="859e8833-4916-42ab-93dc-29e825ca5574">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("February").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="215" y="374" width="75" height="14" uuid="cecc55d9-87a1-4b05-b841-aac3e25b36dd">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("February").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="83" y="391" width="45" height="14" uuid="df3644f4-172c-4e0d-ad72-ded0d11e3247">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("March").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="128" y="391" width="87" height="14" uuid="ae923739-7d6c-4657-a205-9f9b4911f053">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("March").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="215" y="391" width="75" height="14" uuid="f6f10606-5daa-43ca-b265-26c0b20f952e">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("March").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="83" y="407" width="45" height="14" uuid="3523b9ff-a412-4a0b-bde2-709d24bc7e9c">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("April").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="128" y="407" width="87" height="14" uuid="02a5d0ab-a236-4b5a-bc07-7bf8cd9ebd13">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("April").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="215" y="407" width="75" height="14" uuid="554bba47-ca86-44c8-b2ea-b5d3b7df5822">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("April").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="83" y="424" width="45" height="14" uuid="38f309bb-259a-482e-aeb5-61b7cb393361">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("May").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="128" y="424" width="87" height="14" uuid="defe62e8-03ad-4141-a1fd-17d0df3679d8">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("May").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="215" y="424" width="75" height="14" uuid="e87d07fe-c116-4b60-9bbe-c63c8c12101f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("May").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="83" y="440" width="45" height="14" uuid="ce8d91ab-5e3b-4bd0-bd8e-ac68c65dc752">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("June").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="128" y="440" width="87" height="14" uuid="4043fed2-fc28-4987-9beb-8d95b32e9c66">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("June").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="215" y="440" width="75" height="14" uuid="cc43e548-1a2e-4019-99e0-c23f63df7c9b">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("June").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="82" y="457" width="45" height="14" uuid="c8874697-a2ed-41e1-ab45-6443c0ea2dee">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("July").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="127" y="457" width="87" height="14" uuid="761444f2-629d-468e-81d9-fd30e2bfd223">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("July").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="214" y="457" width="75" height="14" uuid="616ed87f-399f-416f-8c48-e6b460b65a42">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("July").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="84" y="473" width="45" height="14" uuid="585c2bee-79a4-4f90-a461-3963610d14c1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("August").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="129" y="473" width="87" height="14" uuid="34120a57-cc58-4840-81a2-d35252692ad5">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("August").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="216" y="473" width="75" height="14" uuid="e27c2771-3a0f-4368-9b01-6d9f6fade2b5">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("August").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="84" y="490" width="45" height="14" uuid="f48c04c0-78aa-46bd-8a31-4c123bbf5d63">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("September").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="129" y="490" width="87" height="14" uuid="d10f3bf5-d0c5-4ca8-b7db-3b5d9928ad78">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("September").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="216" y="490" width="75" height="14" uuid="f08e480b-76da-420d-a468-0d39a2087ba0">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("September").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="84" y="507" width="45" height="14" uuid="0384c3e5-2e5d-4c59-8d12-6edad7da7e23">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("October").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="129" y="507" width="87" height="14" uuid="607a22d2-bafe-4562-ab08-191d4a5c06de">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("October").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="216" y="507" width="75" height="14" uuid="f386c929-5c2a-4117-9c04-69e7be6c3834">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("October").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="83" y="523" width="45" height="14" uuid="698e983d-6a80-45b1-b74b-bc7b5e78b95c">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("November").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="128" y="523" width="87" height="14" uuid="ff435ac6-7fa4-43fe-b106-6cf375fdddf7">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("November").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="215" y="523" width="75" height="14" uuid="2a0f055e-84fb-4faa-83df-cb4fcdf2dd8f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("November").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="84" y="539" width="45" height="14" uuid="1a762fa7-7ac8-49cc-9100-02f2683475e4">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("December").getYear()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="129" y="539" width="87" height="14" uuid="31089643-4f2e-494f-b330-9ebb9aafb087">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("December").getSsContribution()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="216" y="539" width="75" height="14" uuid="6e2b4f53-364e-4771-90d3-00d6f7bb52c4">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("December").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#" isBlankWhenNull="true">
+				<reportElement x="304" y="740" width="76" height="23" uuid="39f90444-faf3-4542-ac36-dfd503ea560d"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("getTotalAmtOfPayment")]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="128" y="573" width="251" height="14" uuid="2c347cde-b820-428e-894a-687048c89b41">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Empty Dataset1" uuid="f0e8ea67-9f25-42ea-99a4-fd9c3f8f45a8">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{UnderPayment})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="88" uuid="eff68492-abaf-4947-9302-5a49383ff273">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell height="16">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="88" height="16" uuid="3738d74d-c0bb-446b-8d24-220e585b8ad7">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ssConPenalty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="74" uuid="fb60ee41-763e-4e5d-8dd3-bf48c50a71b3">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:detailCell height="16">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="74" height="16" uuid="969a517f-e0b3-4d1a-8312-2a74fd781542">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{empCompPenalty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="14953b66-82a0-4f71-ae06-fa69dec31fc8">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell height="16">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="89" height="16" uuid="a702d650-d363-4c93-a215-d8a621572856">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ssConPenalty}+$F{empCompPenalty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement x="128" y="623" width="251" height="14" uuid="b4f28892-d96e-42f9-9999-78c674d9cc64">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Empty Dataset1" uuid="867a683c-bb97-459c-8a48-32614a53e678">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{Penalty})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="88" uuid="348d2b23-ff18-46ac-943e-c2cdf1d896f4">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell height="16">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="88" height="16" uuid="79b41453-3162-4cb6-9850-410d94a7fec3">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ssConPenalty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="74" uuid="8e67094b-58f3-4cd8-a400-0f2dfa7c26f4">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:detailCell height="16">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="74" height="16" uuid="fc5081bd-41bc-4295-a6ab-a9e1226b367e">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{empCompPenalty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="7cbb49de-dd7c-4ace-a326-11bd44e78657">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell height="16">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="89" height="16" uuid="9a40613f-4973-4728-a2f2-cdb4e62303b7">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ssConPenalty}+$F{empCompPenalty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement x="128" y="673" width="251" height="14" uuid="51511299-1d78-422a-acc8-fea5ecaacee2">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Empty Dataset1" uuid="f56a979c-8180-4245-a34a-ebe239db893e">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{Interest})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="88" uuid="181527fc-c62d-4476-a0c1-f20b42b4e9ae">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell height="16">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="88" height="16" uuid="b17b9bb0-3c3b-4e12-a16a-3a609282770c">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ssConPenalty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="74" uuid="6b51490d-1f99-47ff-b3a8-38152f2ef4cc">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:detailCell height="16">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="74" height="16" uuid="7d2a930c-f3e1-4a71-bbce-5bc48075f6c7">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{empCompPenalty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="64dcb40f-bbf9-473d-b5f1-2ae88d5bce1c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell height="16">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="89" height="16" uuid="6537ef88-e216-4f5f-937e-ad21851f2e95">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<box>
+									<pen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Bottom">
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ssConPenalty}+$F{empCompPenalty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="129" y="557" width="87" height="14" uuid="ea5e5108-edb1-453e-b276-45562caa4e95">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("ssConSubTotal")]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="216" y="557" width="75" height="14" uuid="36a79d3c-7ccd-4bed-b75f-a5acbf09ce04">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("ecConSubTotal")]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="291" y="557" width="90" height="14" uuid="5f970a10-95de-4398-87e9-798d1f8616dd">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Double.valueOf($P{otherInfo}.get("ssConSubTotal").toString())+Double.valueOf($P{otherInfo}.get("ecConSubTotal").toString())]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="129" y="723" width="87" height="14" uuid="4569d0c2-4d64-45ae-aba9-d4a9abcdfb40">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("ssConPenaltySubTotal")]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="216" y="723" width="75" height="14" uuid="032fcd58-099a-41c5-bd95-0a935155afee">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("ecConPenaltySubTotal")]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="291" y="723" width="90" height="14" uuid="64b172b7-5a76-418c-a21a-2ac05804d14c">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Double.valueOf($P{otherInfo}.get("ssConPenaltySubTotal").toString())+Double.valueOf($P{otherInfo}.get("ecConPenaltySubTotal").toString())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="542" width="177" height="88" uuid="4e1ed760-1b07-4f01-9e62-31fecb36d7fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("numToWord")]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="292" y="374" width="87" height="14" uuid="37d4ccba-7c1c-40f7-90a6-4b45bbb4797d">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("February").getSsContribution()+
+$P{employerInfo}.getEmpConList().get("February").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="292" y="391" width="87" height="14" uuid="ec66ed16-66e0-4170-b828-d93e57164ee5">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("March").getSsContribution()+
+$P{employerInfo}.getEmpConList().get("March").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="292" y="407" width="87" height="14" uuid="c459a97f-23e5-47aa-8381-32e0c9ed3cd6">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("April").getSsContribution()+$P{employerInfo}.getEmpConList().get("April").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="292" y="424" width="87" height="14" uuid="c5ee8f2b-4bd3-4af7-8bc0-abfa637a01c9">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("May").getSsContribution()+
+$P{employerInfo}.getEmpConList().get("May").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="292" y="440" width="87" height="14" uuid="aa2650fd-70c4-4da3-9c48-be48eb7b94dc">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("June").getSsContribution()+$P{employerInfo}.getEmpConList().get("June").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="291" y="457" width="87" height="14" uuid="032e25be-a0ba-4e1d-9aef-1f3010341695">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("July").getSsContribution()+$P{employerInfo}.getEmpConList().get("July").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="293" y="473" width="87" height="14" uuid="82411fe4-fbc1-4448-ab77-03b8ae3115b3">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("August").getSsContribution()+$P{employerInfo}.getEmpConList().get("August").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="293" y="490" width="87" height="14" uuid="e896a571-625f-4f2e-9ca5-5261e4dd3f5b">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("September").getSsContribution()+
+$P{employerInfo}.getEmpConList().get("September").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="293" y="507" width="87" height="14" uuid="82726c96-a339-46fd-ae52-4b7ada950a68">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("October").getSsContribution()+$P{employerInfo}.getEmpConList().get("October").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="292" y="523" width="87" height="14" uuid="aec8f188-3012-4c9b-a276-0a36848fa1e5">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("November").getSsContribution()+$P{employerInfo}.getEmpConList().get("November").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00###;#,##0.00###-" isBlankWhenNull="true">
+				<reportElement x="293" y="539" width="87" height="14" uuid="5607928a-10fc-4645-8221-4a703f0b59a3">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmpConList().get("December").getSsContribution()+$P{employerInfo}.getEmpConList().get("December").getEmployeeCompensation()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="59" y="183" width="58" height="24" uuid="6c98ac55-68c0-4177-81ff-bda8a310410c">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getSssNumber())>5?
+$P{employerInfo}.getSssNumber().substring(2,6).replace("","  ").trim():
+(LEN($P{employerInfo}.getSssNumber())>2?  $P{employerInfo}.getSssNumber().substring(2,LEN($P{employerInfo}.getSssNumber())).replace("","  ").trim():"" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="119" y="183" width="73" height="24" uuid="6d9acdd5-c895-4bc1-83c9-45b2c269cd39">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getSssNumber())>10?
+$P{employerInfo}.getSssNumber().substring(6,11).replace("","  ").trim():
+(LEN($P{employerInfo}.getSssNumber())>6?  $P{employerInfo}.getSssNumber().substring(6,LEN($P{employerInfo}.getSssNumber())).replace("","  ").trim():"" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="190" y="183" width="31" height="24" uuid="2e654be0-142f-4c4a-9ab6-d060bdf41e01">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getSssNumber())>11?
+$P{employerInfo}.getSssNumber().substring(11,LEN($P{employerInfo}.getSssNumber())).replace("","   ").trim():""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

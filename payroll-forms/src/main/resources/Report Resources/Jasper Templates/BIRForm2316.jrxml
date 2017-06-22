@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-06-07T15:59:07 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BIRForm1601C" pageWidth="612" pageHeight="1008" columnWidth="608" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="fce963fa-af4f-4f5e-90a4-bec20175a0b0">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="493"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="493"/>
+	<parameter name="employeeInfo" class="com.svi.payroll.report.objects.Employee"/>
+	<parameter name="otherInfo" class="java.util.Map">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="nonTaxable" class="com.svi.payroll.report.objects.NonTaxableCompensationIncome"/>
+	<parameter name="taxable" class="com.svi.payroll.report.objects.TaxableCompensationIncome"/>
+	<parameter name="taxableOthersKeySet" class="java.util.List">
+		<defaultValueExpression><![CDATA[new ArrayList<String>($P{taxable}.getTaxableOthers().keySet());]]></defaultValueExpression>
+	</parameter>
+	<parameter name="suppOthersKeySet" class="java.util.List">
+		<defaultValueExpression><![CDATA[new ArrayList<String>($P{taxable}.getSupplementaryOthers().keySet());]]></defaultValueExpression>
+	</parameter>
+	<parameter name="taxSummary" class="com.svi.payroll.report.objects.TaxSummary"/>
+	<parameter name="dependentsKeySet" class="java.util.List">
+		<defaultValueExpression><![CDATA[new ArrayList<String>($P{employeeInfo}.getDependents().keySet());]]></defaultValueExpression>
+	</parameter>
+	<parameter name="formImage" class="java.awt.image.BufferedImage"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<detail>
+		<band height="1004">
+			<image>
+				<reportElement x="0" y="0" width="604" height="1004" uuid="dd02b572-b4aa-4fb1-af5b-2d2153961f1a">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{formImage}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="144" width="199" height="15" uuid="07f7e6e9-4982-41bb-91cc-d5c0e52fe868">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[UPPER($P{employeeInfo}.getCompleteName())]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="168" width="199" height="20" uuid="6af27b10-3765-4d15-8ffe-75f4c2f337ed">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[UPPER($P{employeeInfo}.getRegisteredAdd())]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="193" width="199" height="20" uuid="1ff109f1-8f17-4e47-aa39-9a349d4c4096">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[UPPER($P{employeeInfo}.getLocalAdd())]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="218" width="199" height="20" uuid="c6e00787-2575-4d73-8b75-b5d021d64e51">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[UPPER($P{employeeInfo}.getForeignAdd())]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="259" y="143" width="45" height="15" uuid="5baca0d2-5c11-460b-b0c6-0434de56e805">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getRdoCode().replace("","   ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="259" y="169" width="45" height="15" uuid="826e2b35-dc60-4b1a-9717-0ad08409a013">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getRegisteredAddZipCode().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="259" y="194" width="45" height="15" uuid="4c6f5949-1ffc-432c-a5aa-63a3253478d4">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getLocalAddZipCode().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="258" y="220" width="45" height="15" uuid="8762e23a-08c9-4b4f-807c-be90623d4a39">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getForeignAddZipCode().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="202" y="247" width="102" height="15" uuid="777203b4-39a3-437e-8ba0-20be8d8e9c39">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getTelNum()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="54" y="247" width="102" height="15" uuid="17c246b3-fa4e-4675-bba3-46d304158f40">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getBirthDate().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="50" y="396" width="27" height="15" uuid="76f89753-9c38-43dd-ab5e-fe4b92cc8d9a">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Boolean.TRUE.equals($P{employeeInfo}.getIsMinimumWageEarner().booleanValue())? "X":""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="89" y="273" width="27" height="15" uuid="e8ad8fbe-3a0a-4997-aa37-cf6520942c97">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Boolean.TRUE.equals($P{employeeInfo}.getIsSingle().booleanValue())? "X":""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="174" y="272" width="27" height="15" uuid="3af9866f-1f7c-4b4b-aa94-5fde3ebb67c3">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Boolean.FALSE.equals($P{employeeInfo}.getIsSingle().booleanValue())? "X":""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="89" y="290" width="27" height="15" uuid="a79ca42e-2d1c-4c16-af95-6ea0ce36d152">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Boolean.TRUE.equals($P{employeeInfo}.getIsWifeClaimingExemption().booleanValue())? "X":""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="174" y="289" width="27" height="15" uuid="801b612e-1616-4b10-a8db-9618e5bb319a">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Boolean.TRUE.equals($P{employeeInfo}.getIsWifeClaimingExemption().booleanValue())? "":"X"]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="210" y="364" width="90" height="15" uuid="ce76f573-7f82-4460-bfb5-f30f207ef586">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getIsMinimumWageEarner().booleanValue()? ($P{employeeInfo}.getSmwRatePerDay()==0.0?"":$P{employeeInfo}.getSmwRatePerDay()):""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="210" y="380" width="90" height="15" uuid="a828485c-69a1-443d-9bc3-befeda1038c4">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getIsMinimumWageEarner().booleanValue()? ($P{employeeInfo}.getSmwRatePerMonth()==0.0? "":$P{employeeInfo}.getSmwRatePerMonth()):""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="116" width="31" height="15" uuid="24fee78b-4ee3-426b-b991-4332f047263e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getTin())>2?
+$P{employeeInfo}.getTin().substring(0,3).replace(""," ").trim():
+(LEN($P{employeeInfo}.getTin())>0? ($P{employeeInfo}.getTin().substring(0,LEN($P{employeeInfo}.getTin())).replace(""," ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="116" width="31" height="15" uuid="58f27ebb-d4d4-4b82-95f6-2ff5eec2e8bc"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getTin())>5?
+$P{employeeInfo}.getTin().substring(3,6).replace(""," ").trim():
+(LEN($P{employeeInfo}.getTin())>3? ($P{employeeInfo}.getTin().substring(3,LEN($P{employeeInfo}.getTin())).replace(""," ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="116" width="31" height="15" uuid="c74e8898-26d9-427f-bd2a-a69988f7e3dd"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getTin())>8?
+$P{employeeInfo}.getTin().substring(6,9).replace(""," ").trim():
+(LEN($P{employeeInfo}.getTin())>6?  $P{employeeInfo}.getTin().substring(6,LEN($P{employeeInfo}.getTin())).replace(""," ").trim():"" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="267" y="116" width="41" height="15" uuid="4f961b7f-8311-4798-beb5-db86d0e6f9c5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getTin())>9?
+$P{employeeInfo}.getTin().substring(9,LEN($P{employeeInfo}.getTin())).replace(""," ").trim():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="130" y="85" width="45" height="15" uuid="140357f5-ac46-4044-a33e-7004e2261190">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("forTheYear").toString().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="404" y="85" width="41" height="15" uuid="d9f42071-1a62-4e80-bc7b-8b56b6fb9b15">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("startPeriod").toString().replace(""," ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="516" y="85" width="41" height="15" uuid="9a613658-3b21-467f-b50e-aeb18fa44f76">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("endPeriod").toString().replace(""," ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="451" width="251" height="15" uuid="cb23c770-d024-4428-86d2-60a7ada73d43">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getPresentEmployer().getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="474" width="199" height="21" uuid="ed470468-136d-4faa-9d6d-f5f3d9e54fbe">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getPresentEmployer().getRegisteredAdd()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="258" y="478" width="45" height="15" uuid="671877a1-1c02-4b3a-84dc-fd8f5e4999fc">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getPresentEmployer().getRegisteredAddZipCode().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="425" width="31" height="15" uuid="1900f6f1-a7e4-49b2-8dab-29c5efe7d02c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getPresentEmployer().getTin())>2?
+$P{employeeInfo}.getPresentEmployer().getTin().substring(0,3).replace(""," ").trim():
+(LEN($P{employeeInfo}.getPresentEmployer().getTin())>0? ($P{employeeInfo}.getPresentEmployer().getTin().substring(0,LEN($P{employeeInfo}.getPresentEmployer().getTin())).replace(""," ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="178" y="425" width="31" height="15" uuid="5bfc4c3a-2cff-4337-bd45-f205191a18cb"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getPresentEmployer().getTin())>5?
+$P{employeeInfo}.getPresentEmployer().getTin().substring(3,6).replace(""," ").trim():
+(LEN($P{employeeInfo}.getPresentEmployer().getTin())>3? ($P{employeeInfo}.getPresentEmployer().getTin().substring(3,LEN($P{employeeInfo}.getPresentEmployer().getTin())).replace(""," ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="425" width="31" height="15" uuid="971643ae-0c7f-4d7e-9579-6fe5c3bdfb8f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getPresentEmployer().getTin())>8?
+$P{employeeInfo}.getPresentEmployer().getTin().substring(6,9).replace(""," ").trim():
+(LEN($P{employeeInfo}.getPresentEmployer().getTin())>6?  $P{employeeInfo}.getPresentEmployer().getTin().substring(6,LEN($P{employeeInfo}.getPresentEmployer().getTin())).replace(""," ").trim():"" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="267" y="425" width="41" height="15" uuid="0d065bb3-b107-426a-ad28-454176733293"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getPresentEmployer().getTin())>9?
+$P{employeeInfo}.getPresentEmployer().getTin().substring(9,LEN($P{employeeInfo}.getPresentEmployer().getTin())).replace(""," ").trim():""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="68" y="492" width="12" height="14" uuid="e91520e4-a09a-46ee-ad78-62134943a381">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getPresentEmployer().getIsMainEmployer().booleanValue()? "X":""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="161" y="493" width="12" height="14" uuid="3a00dee4-0e94-4692-aed5-fa38f4a526ec">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getPresentEmployer().getIsMainEmployer().booleanValue()? "":"X"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="514" width="31" height="15" uuid="eb57d7f2-63c9-4307-b177-bd09fbadce7a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getPreviousEmployer().getTin())>2?
+$P{employeeInfo}.getPreviousEmployer().getTin().substring(0,3).replace(""," ").trim():
+(LEN($P{employeeInfo}.getPreviousEmployer().getTin())>0? ($P{employeeInfo}.getPreviousEmployer().getTin().substring(0,LEN($P{employeeInfo}.getPreviousEmployer().getTin())).replace(""," ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="178" y="514" width="31" height="15" uuid="0458ef0a-446c-44af-afd1-d7fa7e2a9218"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getPreviousEmployer().getTin())>5?
+$P{employeeInfo}.getPreviousEmployer().getTin().substring(3,6).replace(""," ").trim():
+(LEN($P{employeeInfo}.getPreviousEmployer().getTin())>3? ($P{employeeInfo}.getPreviousEmployer().getTin().substring(3,LEN($P{employeeInfo}.getPreviousEmployer().getTin())).replace(""," ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="514" width="31" height="15" uuid="82a47faa-8301-4666-b2a6-f08666d8e586"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getPreviousEmployer().getTin())>8?
+$P{employeeInfo}.getPreviousEmployer().getTin().substring(6,9).replace(""," ").trim():
+(LEN($P{employeeInfo}.getPreviousEmployer().getTin())>6?  $P{employeeInfo}.getPreviousEmployer().getTin().substring(6,LEN($P{employeeInfo}.getPreviousEmployer().getTin())).replace(""," ").trim():"" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="267" y="514" width="41" height="15" uuid="296594fe-147b-4535-a8dc-5dc61ac44e6b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employeeInfo}.getPreviousEmployer().getTin())>9?
+$P{employeeInfo}.getPreviousEmployer().getTin().substring(9,LEN($P{employeeInfo}.getPreviousEmployer().getTin())).replace(""," ").trim():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="540" width="251" height="15" uuid="7a8af8fa-8fcd-4756-8e7b-0cbafa17a5d3">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getPreviousEmployer().getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="563" width="199" height="21" uuid="756fa8ce-eed3-4a31-bb29-75af398ece17">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getPreviousEmployer().getRegisteredAdd()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="259" y="566" width="45" height="15" uuid="04e22e87-d67d-49b7-ade3-a6bcd634b7c6">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getPreviousEmployer().getRegisteredAddZipCode().replace("","  ").trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="82" y="821" width="199" height="15" uuid="58143d9f-e679-43b6-838b-ba3da117bb9d">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="349" y="914" width="167" height="15" uuid="48cb03c2-f3bf-47ed-bcfd-3738f9ad9c82">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="82" y="800" width="198" height="15" uuid="4fa25a14-2b30-4e0a-9871-5b4bcfbcf39f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("employerSignatoryName")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="69" y="890" width="211" height="15" uuid="4971c9e5-1e59-411b-b8b1-3930170a825b">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("employerSignatoryName")]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="144" width="119" height="15" uuid="06d70f04-d9ec-44a7-8569-9d37e9d2c546"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nonTaxable}.getBasicSalarySMWE()==0.0? "":$P{nonTaxable}.getBasicSalarySMWE()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="176" width="119" height="15" uuid="27283dbd-ec67-4e71-9ae4-4eebfd626915"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nonTaxable}.getHolidayPayMWE()==0.0? "":$P{nonTaxable}.getHolidayPayMWE()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="197" width="119" height="15" uuid="20ddcf5b-e15a-474f-b50d-b994c05b8158"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nonTaxable}.getOvertimePayMWE()==0.0? "":$P{nonTaxable}.getOvertimePayMWE()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="218" width="119" height="15" uuid="7f63cadf-07b3-45b3-89ba-c8b8b8e835e1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nonTaxable}.getNightShiftDiffMWE()==0.0? "":$P{nonTaxable}.getNightShiftDiffMWE()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="240" width="119" height="15" uuid="4ed11994-e7a6-4128-bde6-71888e3fbfea"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nonTaxable}.getHazardPayMWE()==0.0? "":$P{nonTaxable}.getHazardPayMWE()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="260" width="119" height="15" uuid="457e9cf5-b7f8-4c6a-ab16-caf98ad4f5ab"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nonTaxable}.getThirteenthMonthAndOtherBenefits()==0.0? "":$P{nonTaxable}.getThirteenthMonthAndOtherBenefits()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="285" width="119" height="15" uuid="402b04b1-48d2-4dc2-aafd-d374aae8af94"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nonTaxable}.getDeMinimis()==0.0? "":$P{nonTaxable}.getDeMinimis()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="315" width="119" height="15" uuid="2702c249-ce0c-4b36-8e90-34da03bde485"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nonTaxable}.getContributionsAndUnionDues()==0.0? "":$P{nonTaxable}.getContributionsAndUnionDues()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="352" width="119" height="15" uuid="9f9398b4-3647-46e1-b39c-83b8ce5f5bf1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nonTaxable}.getOtherFormsOfCompensation()==0.0? "":$P{nonTaxable}.getOtherFormsOfCompensation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="380" width="119" height="15" uuid="be2d7729-a603-4076-bb01-6361a85a385a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nonTaxable}==null? 0.0:$P{nonTaxable}.getTotal()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="87" y="840" width="83" height="15" uuid="34441598-66b3-4ea3-a47e-4759fa7e0c72">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getCtcNum()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="217" y="840" width="70" height="15" uuid="c23a77d8-c2e9-407b-9a69-0927a71ea1ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getCtcPlaceOfIssue()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="477" y="840" width="75" height="15" uuid="b08f689c-34e2-4e0b-9129-3ee1f740f80e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getCtcAmountPaid() == 0.0? "":$P{employeeInfo}.getCtcAmountPaid()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="350" y="840" width="95" height="15" uuid="16c4a94f-7b0e-461e-aa58-2d9233f6f6fb">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employeeInfo}.getCtcDateOfIssue().replace("","   ").trim()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="432" width="119" height="15" uuid="3145bb64-e6c8-4ab9-a0e9-78a2e891e264"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}.getBasicSalary()==0.0? "":$P{taxable}.getBasicSalary()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="453" width="119" height="15" uuid="31a23caf-52d9-4eb6-b26c-33938c6eb23c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}.getRepresentation()==0.0? "":$P{taxable}.getRepresentation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="473" width="119" height="15" uuid="3da91b2b-cd49-4f60-8ef9-e7a51eaeb56d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}.getTransportation()==0.0? "":$P{taxable}.getTransportation()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="493" width="119" height="15" uuid="1028ec89-48d6-4f2d-b40a-d3bff0251922"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}.getCostOfLivingAllowance()==0.0? "":$P{taxable}.getCostOfLivingAllowance()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="514" width="119" height="15" uuid="3c920a61-af5e-46c3-a2d9-d5e336f0e0f1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}.getFixedHousingAllow()==0.0? "":$P{taxable}.getFixedHousingAllow()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="540" width="119" height="15" uuid="6ccd4d5a-60b7-4b5a-8321-bbddd67bc9f5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxableOthersKeySet}.size() >0? $P{taxable}.getTaxableOthers().get($P{taxableOthersKeySet}.get(0)):""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="587" width="119" height="15" uuid="e96d8971-433e-4ed5-8539-c3a9f9b62d3a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}.getCommission()==0.0? "":$P{taxable}.getCommission()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="609" width="119" height="15" uuid="8e6db2f3-d483-4f96-b6a9-ad2edff45343"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}.getProfitSharing()==0.0? "":$P{taxable}.getProfitSharing()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="633" width="119" height="15" uuid="2e5ed673-5bb5-45d2-9297-45e8fb1a0ae3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}.getFees()==0.0? "": $P{taxable}.getFees()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="655" width="119" height="15" uuid="bcb25650-d55a-477b-90b9-ef5a264524a7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}.getTaxable13thMonthAndOtherBenefits()==0.0? "":$P{taxable}.getTaxable13thMonthAndOtherBenefits()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="679" width="119" height="15" uuid="595242f1-de20-4e27-a54d-9000e1f8ada7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}.getHazarddPay()==0.0? "":$P{taxable}.getHazarddPay()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="701" width="119" height="15" uuid="1731a465-41c9-43f0-9179-2451ee7e928a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}.getOvertimePay()==0.0?"":$P{taxable}.getOvertimePay()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="770" width="119" height="15" uuid="01cb46af-35a5-4679-8a99-e859c64f6b7c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}==null? 0.0:$P{taxable}.getTotal()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="326" y="541" width="92" height="15" uuid="9e915ade-0b95-417f-aa40-9ee463b4524d">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxableOthersKeySet}.size() >0? $P{taxableOthersKeySet}.get(0):""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="326" y="560" width="92" height="15" uuid="f68c9211-379e-4029-99a7-13868291354b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxableOthersKeySet}.size() >1? $P{taxableOthersKeySet}.get(1):""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="560" width="119" height="15" uuid="e6fc93c8-f15c-414a-909d-228e323f9305"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxableOthersKeySet}.size() >1? $P{taxable}.getTaxableOthers().get($P{taxableOthersKeySet}.get(1)):""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="326" y="734" width="94" height="15" uuid="2dcf128f-a185-4a37-bb79-c1f273bd2a24"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{suppOthersKeySet}.size() >0? $P{suppOthersKeySet}.get(0):""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="326" y="751" width="94" height="15" uuid="55383ce0-cd0b-4f7c-8f51-998c5214a0e1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{suppOthersKeySet}.size() >1? $P{suppOthersKeySet}.get(1):""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="735" width="119" height="15" uuid="1e9f89f6-bbba-4ab6-ba50-efb160da1901"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{suppOthersKeySet}.size() >0? $P{taxable}.getSupplementaryOthers().get($P{suppOthersKeySet}.get(0)):""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="436" y="751" width="119" height="15" uuid="ccec7a28-451d-4b78-a18c-030ba52ca832"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{suppOthersKeySet}.size() >1? $P{taxable}.getSupplementaryOthers().get($P{suppOthersKeySet}.get(1)):""]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="181" y="610" width="121" height="15" uuid="15154d77-3326-4f23-a74e-95f336668bc2">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nonTaxable}==null? "":($P{nonTaxable}.getTotal()==0.0? "":$P{nonTaxable}.getTotal())]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="181" y="594" width="121" height="15" uuid="77c64ad8-3a8f-4022-841e-9c583d5e9dcd">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(($P{taxable}==null? 0.0:$P{taxable}.getTotal())+($P{nonTaxable}==null? 0.0:$P{nonTaxable}.getTotal())) == 0.0? "":(($P{taxable}==null? 0.0:$P{taxable}.getTotal())+($P{nonTaxable}==null? 0.0:$P{nonTaxable}.getTotal()))]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="181" y="625" width="121" height="15" uuid="5bc34b20-5f40-4444-8adb-1129631a657c">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxable}==null? "":($P{taxable}.getTotal()==0.0?"":$P{taxable}.getTotal())]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="181" y="641" width="121" height="15" uuid="eba77f41-990f-4a4f-b327-1acc9412567f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxSummary}.getTaxableIncomeFromPreviousEmployer() == 0.0 ?"":$P{taxSummary}.getTaxableIncomeFromPreviousEmployer()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="181" y="656" width="121" height="15" uuid="230f9a57-af95-4815-9f60-a29cd1b56df4">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{taxable}==null? 0.0:$P{taxable}.getTotal())+($P{taxSummary}==null? 0.0:$P{taxSummary}.getTaxableIncomeFromPreviousEmployer())]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="181" y="671" width="121" height="15" uuid="96a022f5-9449-469c-a3cb-89fe2e0ebb83">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxSummary}.getTotalExemptions()==0.0?"":$P{taxSummary}.getTotalExemptions()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="181" y="688" width="121" height="15" uuid="2bac505d-d1c4-4f30-8e26-7f5f6544b16d">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxSummary}.getPremiumsPaidOnHealth()==0.0?"":$P{taxSummary}.getPremiumsPaidOnHealth()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="true">
+				<reportElement x="181" y="703" width="121" height="15" uuid="32339d9a-a2a6-4bc0-8a08-9c217ed48fab">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{taxable}==null? 0.0:$P{taxable}.getTotal())+($P{taxSummary}==null? 0.0:$P{taxSummary}.getTaxableIncomeFromPreviousEmployer())+($P{taxSummary}==null? 0.0:-1*($P{taxSummary}.getTotalExemptions()))+($P{taxSummary}==null? 0.0:-1*($P{taxSummary}.getPremiumsPaidOnHealth()))]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="181" y="719" width="121" height="15" uuid="b3124eb1-20f1-48be-b848-e030d940926d">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxSummary}.getTaxDue()==0.0?"":$P{taxSummary}.getTaxDue()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="181" y="740" width="121" height="15" uuid="4aa40e46-edb5-4058-986c-29474d69ce27">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxSummary}.getTaxWithheldPresentEmployer()==0.0?"":$P{taxSummary}.getTaxWithheldPresentEmployer()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="181" y="756" width="121" height="15" uuid="ca3cda9a-e233-465f-8792-7ae1b0ea160e">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxSummary}.getTaxWithheldPreviousEmployer()==0.0?"":$P{taxSummary}.getTaxWithheldPreviousEmployer()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+				<reportElement x="181" y="772" width="121" height="15" uuid="805de506-8280-4f25-9175-ed65db251c88">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{taxSummary}.getTotalTaxesWithheldAsAdjusted()<=0.0? "": $P{taxSummary}.getTotalTaxesWithheldAsAdjusted()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="315" width="150" height="13" uuid="fadbd818-579c-4d4d-bc92-e43d20a667d5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dependentsKeySet}.size()>0? $P{dependentsKeySet}.get(0):""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="211" y="315" width="94" height="13" uuid="26dcba2e-d59e-44c7-a9d9-532929dd2772">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dependentsKeySet}.size()>0? $P{employeeInfo}.getDependents().get($P{dependentsKeySet}.get(0)).replace("","   ").trim():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="326" width="150" height="13" uuid="2b53e980-9cae-4486-8564-1514670fb5f6">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dependentsKeySet}.size()>1? $P{dependentsKeySet}.get(1):""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="211" y="327" width="94" height="13" uuid="489b3402-9830-46e4-a298-50919461e92f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dependentsKeySet}.size()>1?  $P{employeeInfo}.getDependents().get($P{dependentsKeySet}.get(1)).replace("","   ").trim():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="337" width="150" height="13" uuid="0793cafa-13ef-439d-8c14-184d0377bfac">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dependentsKeySet}.size()>2? $P{dependentsKeySet}.get(2):""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="211" y="337" width="94" height="13" uuid="d769f76a-0e90-4e05-98f0-3d95f815670b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dependentsKeySet}.size()>2?$P{employeeInfo}.getDependents().get($P{dependentsKeySet}.get(2)).replace("","   ").trim():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="347" width="150" height="13" uuid="632e1bcb-09ef-4696-9934-ff9e21f659d0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dependentsKeySet}.size()>3? $P{dependentsKeySet}.get(3):""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="211" y="347" width="94" height="13" uuid="5e3c37fc-3f41-4c4a-bcad-c602bd456ec3">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dependentsKeySet}.size()>3? $P{employeeInfo}.getDependents().get($P{dependentsKeySet}.get(3)).replace("","   ").trim():""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

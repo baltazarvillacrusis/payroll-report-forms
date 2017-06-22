@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-04-10T21:59:14 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PhilHealthRF1" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="1004" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="bd995875-db93-4bfe-8ea4-594826027394">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="EmployeeList" uuid="8e944503-2409-42fb-b878-82fda607f402">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="lastName" class="java.lang.String">
+			<fieldDescription><![CDATA[lastName]]></fieldDescription>
+		</field>
+		<field name="firstName" class="java.lang.String">
+			<fieldDescription><![CDATA[firstName]]></fieldDescription>
+		</field>
+		<field name="middleName" class="java.lang.String">
+			<fieldDescription><![CDATA[middleName]]></fieldDescription>
+		</field>
+		<field name="extensionName" class="java.lang.String">
+			<fieldDescription><![CDATA[extensionName]]></fieldDescription>
+		</field>
+		<field name="birthDate" class="java.lang.String">
+			<fieldDescription><![CDATA[birthDate]]></fieldDescription>
+		</field>
+		<field name="monthlySalaryBracket" class="java.lang.Integer">
+			<fieldDescription><![CDATA[monthlySalaryBracket]]></fieldDescription>
+		</field>
+		<field name="employerSharePhil" class="java.lang.Double">
+			<fieldDescription><![CDATA[employerSharePhil]]></fieldDescription>
+		</field>
+		<field name="personalSharePhil" class="java.lang.Double">
+			<fieldDescription><![CDATA[personalSharePhil]]></fieldDescription>
+		</field>
+		<field name="status" class="java.lang.String">
+			<fieldDescription><![CDATA[status]]></fieldDescription>
+		</field>
+		<field name="effectivityDate" class="java.lang.String">
+			<fieldDescription><![CDATA[effectivityDate]]></fieldDescription>
+		</field>
+		<field name="pin" class="java.lang.String">
+			<fieldDescription><![CDATA[pin]]></fieldDescription>
+		</field>
+		<field name="sex" class="com.svi.payroll.report.objects.Employee.SEX">
+			<fieldDescription><![CDATA[sex]]></fieldDescription>
+		</field>
+		<variable name="rowNumber" class="java.lang.Integer" resetType="Page">
+			<variableExpression><![CDATA[$V{rowNumber}+1]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="Empty Dataset1" uuid="690682ed-5d5c-4668-881e-bd8f979bd64f">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="lastName" class="java.lang.String">
+			<fieldDescription><![CDATA[lastName]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="employerInfo" class="com.svi.payroll.report.objects.Employer"/>
+	<parameter name="otherInfo" class="java.util.Map"/>
+	<parameter name="employeeBean" class="com.svi.payroll.report.objects.EmployeeBean"/>
+	<parameter name="headerImage" class="java.awt.image.BufferedImage"/>
+	<parameter name="footerImage" class="java.awt.image.BufferedImage"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<variable name="currentPageNumber" class="java.lang.Integer" resetType="Page">
+		<variableExpression><![CDATA[0]]></variableExpression>
+		<initialValueExpression><![CDATA[$V{PAGE_NUMBER}]]></initialValueExpression>
+	</variable>
+	<pageHeader>
+		<band height="200">
+			<image>
+				<reportElement x="0" y="0" width="1002" height="200" uuid="6f5a3f71-6da9-4b1c-aaa1-c821d24a01ac">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{headerImage}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="216" y="96" width="333" height="17" uuid="fa957f3b-c51c-416b-acb2-d9e0cdd7f8ea">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="215" y="121" width="355" height="17" uuid="e37bf126-c3fe-45d4-9d88-55e3e156052c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getRegisteredAdd()) < 64? "": $P{employerInfo}.getRegisteredAdd().substring(64,LEN($P{employerInfo}.getRegisteredAdd()))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="215" y="134" width="131" height="17" uuid="93263977-ebea-4953-8e7f-0f104cad4df5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getTelNum()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="420" y="133" width="129" height="17" uuid="79169a96-7cb7-44a5-aeab-266f313118b1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{employerInfo}.getEmailAddress()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="605" y="111" width="20" height="13" uuid="b5696980-761d-483c-9f16-8d65732a0e0b"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{employerInfo}.getCategory().toString().toUpperCase(),"PRIVATE")? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="605" y="124" width="20" height="13" uuid="41b194b6-3f4e-43c5-bf9c-68d46c6764d0"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{employerInfo}.getCategory().toString().toUpperCase(),"GOVERNMENT")? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="605" y="137" width="20" height="13" uuid="f175d348-cbe0-47ce-a3fb-1ae9d5a67730"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{employerInfo}.getCategory().toString().toUpperCase(),"HOUSEHOLD")? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="876" y="127" width="103" height="13" uuid="025d6f62-12a4-4ac1-b8f5-335dd43f2299"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("applicablePeriod")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="764" y="110" width="20" height="13" uuid="e15fd302-8893-422a-8c03-6d296ae21c68"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{otherInfo}.get("reportType").toString().toUpperCase(),"REGULAR")? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="764" y="123" width="20" height="13" uuid="7aa193a6-14e1-4ef3-8298-a9cadc4a6883"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{otherInfo}.get("reportType").toString().toUpperCase(),"ADDITION_TO_PREVIOUS")? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="764" y="137" width="20" height="13" uuid="bd760f04-70ca-483b-9354-02e748e8dfe5"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[EXACT($P{otherInfo}.get("reportType").toString().toUpperCase(),"DEDUCTION_TO_PREVIOUS")? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="216" y="109" width="354" height="17" uuid="b0401453-f1dc-4cab-9880-031ebcad49d5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getRegisteredAdd()) < 64? $P{employerInfo}.getRegisteredAdd(): $P{employerInfo}.getRegisteredAdd().substring(0,64)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="210" y="64" width="40" height="17" uuid="19e8d8ad-1a0c-4599-8877-d4a83a12da6a">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getPhilHealthNumber().toString())>1?
+$P{employerInfo}.getPhilHealthNumber().toString().substring(0,2).replace("","      ").trim():
+(LEN($P{employerInfo}.getPhilHealthNumber().toString())>0? ($P{employerInfo}.getPhilHealthNumber().toString().substring(0,LEN($P{employerInfo}.getPhilHealthNumber().toString())).replace("","      ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="267" y="64" width="193" height="17" uuid="29043db8-d366-40a9-8f62-db90d6d0775f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getPhilHealthNumber().toString())>10?
+$P{employerInfo}.getPhilHealthNumber().toString().substring(2,11).replace("","      ").trim():
+(LEN($P{employerInfo}.getPhilHealthNumber().toString())>2? ($P{employerInfo}.getPhilHealthNumber().toString().substring(2,LEN($P{employerInfo}.getPhilHealthNumber().toString())).replace("","      ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="471" y="64" width="26" height="17" uuid="252f1b52-1569-4f4f-904c-9d8251a39482">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getPhilHealthNumber().toString())>11?
+$P{employerInfo}.getPhilHealthNumber().toString().substring(11,12).replace("","  ").trim():""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="213" y="79" width="57" height="17" uuid="0a399e6d-79f3-446f-a164-8277a4479255">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getTin().toString())>2?
+$P{employerInfo}.getTin().toString().substring(0,3).replace("","      ").trim():
+(LEN($P{employerInfo}.getTin().toString())>0? ($P{employerInfo}.getTin().toString().substring(0,LEN($P{employerInfo}.getTin().toString())).replace("","      ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="289" y="79" width="57" height="17" uuid="d80e9b93-4578-4eb4-8d66-07c2b4114330">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getTin().toString())>5?
+$P{employerInfo}.getTin().toString().substring(3,6).replace("","      ").trim():
+(LEN($P{employerInfo}.getTin().toString())>3? ($P{employerInfo}.getTin().toString().substring(3,LEN($P{employerInfo}.getTin().toString())).replace("","      ").trim()):"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="365" y="79" width="145" height="17" uuid="e5943b21-493e-48b1-987f-710a2eda393a">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN($P{employerInfo}.getTin().toString())>8?
+$P{employerInfo}.getTin().toString().substring(6,LEN($P{employerInfo}.getTin().toString())).replace("","      ").trim():
+(LEN($P{employerInfo}.getTin().toString())>6? ($P{employerInfo}.getTin().toString().substring(6,LEN($P{employerInfo}.getTin().toString())).replace("","      ").trim()):"")]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="261" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<componentElement>
+				<reportElement positionType="Float" x="80" y="0" width="899" height="261" uuid="a72fa72e-1629-4b91-a9ed-1e2c8b64228f">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="EmployeeList" uuid="233421da-14e1-4745-996a-12d6d2546dae">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{employeeBean})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="19" uuid="7ac0d597-78c4-4d05-b146-55f9257db8c5">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="19" height="20" uuid="44ee8073-40f6-41cb-a3ce-afbcab464721"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{rowNumber}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="5" uuid="edde8c72-cbc5-422b-a4f7-381085056057">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="191b6c8c-447b-43cf-bce9-c5309f36ae58">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="df7ea2c7-db2f-4e79-9544-b9d460e32ead"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 0? $F{pin}.substring(0,1):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="639be276-3d7d-4bd5-8e6b-7969e93e4d7b">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="97cce5d6-e6a2-4baf-bb85-0171917a1a56"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 1? $F{pin}.substring(1,2):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="5" uuid="1433f5c5-b11a-474f-af84-3e0a0be93516">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="775892e9-fcb8-48a1-940c-c129e42cb2fb">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="7f5375b0-16d7-4411-94bd-0a2c10018e9b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 2? $F{pin}.substring(2,3):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="da758f21-ce77-4568-bd7c-51d11d8c86b9">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="099c50a1-adae-4820-a53a-5f9d3cd7f117"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 3? $F{pin}.substring(3,4):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="28c6fc30-6e7d-4e65-bb65-13ce1a746af0">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="834995ac-6885-4c4a-b63d-8d16d66ba076"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 4? $F{pin}.substring(4,5):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="e723a272-0b0a-4dd5-a3a9-76d27527cb67">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="ce111bc6-ea6d-442c-adc7-a8121fee5ad4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 5? $F{pin}.substring(5,6):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="d66f7c8e-fa2f-4e58-aa8a-dc2e6f6c3b69">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="7c0345d8-0831-4565-8116-ffcd5511bfea"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 6? $F{pin}.substring(6,7):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="d5aec074-aa79-434b-a7d8-f85f637ed24c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column11"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="c9a10eb1-c3b7-45ff-a172-9550f554ecec"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 7? $F{pin}.substring(7,8):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="3b9d1190-880c-40c0-9890-4dffda1bff8b">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column12"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="4a907e00-a3cb-4288-8299-0e8c64a1fb85"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 8? $F{pin}.substring(8,9):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="87a729f7-a670-4920-871e-2f08b1082577">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column13"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="f41f4b45-5571-4677-bbc0-35985d61280a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 9? $F{pin}.substring(9,10):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="45c8a7cb-1296-4645-b25f-070cd852b678">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column14"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="cc0f5373-d54c-4044-8f5f-bfaec882ae21"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 10? $F{pin}.substring(10,11):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="5" uuid="148649cd-2fbb-4bba-a3bb-59c0868edb69">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column15"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="12" uuid="d5b832d7-653c-4884-96cb-488b9959ab88">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column16"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="12" height="20" uuid="057e8426-c56a-4f1c-a333-ab700370f0ca"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[LEN($F{pin}) > 11? $F{pin}.substring(11,12):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="4" uuid="c8626e3a-6bb8-4940-90da-0568e69d5000">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column17"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="119" uuid="cf8473a7-9652-4cb9-8f1b-1d7ff78754a9">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column18"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="119" height="20" uuid="62a9bf39-a232-42bb-822d-d04e44119631"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<paragraph leftIndent="3"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="119" uuid="25320c94-4d58-4325-9a67-73bf33475232">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column19"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="119" height="20" uuid="8c5522da-d739-40d4-80a1-a8eaa98cddc4"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<paragraph leftIndent="3"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="9f49b52d-1f11-4a5d-b240-24402c46c282">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column20"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="36" height="20" uuid="a0255f4c-eaa8-4fcb-a77c-809990e5e19b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{extensionName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="113" uuid="554e9c94-bd0c-4900-9122-59a0686b34ba">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column21"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="113" height="20" uuid="084df596-e503-4f9d-a8f0-403aea3f2ba0"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<paragraph leftIndent="3"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{middleName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="20" uuid="bbffc31e-7aea-4604-b37e-f03fe5ea9093">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column22"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="20" height="20" uuid="006e8362-ec2e-4061-97c9-c8926387581f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[LEN($F{pin}.trim()).intValue() ==0? (LEN($F{birthDate}) > 2?   $F{birthDate}.substring(0,2):""):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="20" uuid="cf24cade-baf3-47c3-a7cc-128984f5e606">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column23"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="20" height="20" uuid="48852d7c-95b1-46a5-a7af-c662517cea36"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[LEN($F{pin}.trim())==0? (LEN($F{birthDate}) > 4?   $F{birthDate}.substring(2,4):""):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="32" uuid="34aabb9c-a616-4afa-be5b-ceb617410aaf">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column24"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="32" height="20" uuid="62526f7e-d092-406f-aecd-eef46baca33b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[LEN($F{pin}.trim())==0? (LEN($F{birthDate}) > 7?   $F{birthDate}.substring(4,8):""):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="23" uuid="9eaa19bb-6ec8-4df0-afaa-f3c634ced19f">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column25"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="23" height="20" uuid="771f3d21-9fe8-4386-9d09-9f240d0d4e4b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[LEN($F{pin}.trim())==0.0? (LEFT($F{sex}.toString())):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="28" uuid="cc706eb7-6ad5-4344-82b0-bcd30da84c57">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column26"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="28" height="20" uuid="d5a082db-8257-47e0-a473-ca68e03b0771"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{monthlySalaryBracket}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="53" uuid="8a301751-d07c-41b3-a6a3-8c61decb437c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column27"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="53" height="20" uuid="8b69a18d-7b3e-49f8-81f3-f3f0fb8815f5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{personalSharePhil}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="49" uuid="197e09bb-1ecf-4882-88dc-8967fc2ee48c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column28"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="49" height="20" uuid="0df02fbd-eece-4725-b4bc-88fd4122736f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{employerSharePhil}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="22" uuid="29562434-c79f-46f6-bf91-975ec24c33f6">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column29"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="22" height="20" uuid="978130fd-aae9-4ca2-859b-4992760cc78e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="22" uuid="88d8fa05-43b5-4431-a04d-2a33d4901f0c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column30"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="22" height="20" uuid="8c865f1f-45e0-4a90-a964-363384adc6e5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[LEN($F{effectivityDate}) > 2?   $F{effectivityDate}.substring(0,2):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="22" uuid="d2e8bfb0-0c0f-430b-8d47-bb214758fc49">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column31"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="22" height="20" uuid="766d2bd8-f633-4396-8fe4-65795b2ec136"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[LEN($F{effectivityDate}) > 4?   $F{effectivityDate}.substring(2,4):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="40" uuid="743812c9-8f36-453f-b35b-155d7ad9118c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column32"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="40" height="20" uuid="e4039562-250b-4472-94e9-c8f9d1e85e13"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[LEN($F{effectivityDate}) > 7?   $F{effectivityDate}.substring(4,8):""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="147" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="1004" height="147" uuid="5d43d4fe-4647-4215-9cec-071555062984"/>
+				<imageExpression><![CDATA[$P{footerImage}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="171" y="44" width="93" height="19" uuid="9543cee8-5b0e-4679-96ab-50a86deafc05">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("applicablePeriod")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="312" y="82" width="155" height="19" uuid="fd38759c-9f94-4e26-adb7-7669c39e79fb">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("certifiedByName")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="498" y="82" width="114" height="19" uuid="b74713e9-7282-46ba-b0fc-b025de8c8e14">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("certifiedByDesignation")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="875" y="28" width="103" height="19" uuid="860c5734-9982-4f65-9b27-5682abe070cf">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("preparedByDesignation")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="874" y="12" width="104" height="19" uuid="440390df-0c5a-4893-9ce7-c0ce9a1e595d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{otherInfo}.get("preparedByName")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="879" y="109" width="26" height="13" uuid="6f47de19-603e-4685-aaee-1ecb551332b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="921" y="109" width="23" height="13" uuid="541f8589-5767-47f3-abee-cd8fe1c62a1e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Auto">
+				<reportElement x="102" y="16" width="41" height="21" uuid="c9e634fc-0c03-43b5-873f-1045cc4f58d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($V{currentPageNumber}+1) == $V{PAGE_NUMBER}? ($P{employeeBean}.getNumEmployeesInLastPage()==0? $P{employeeBean}.getMaxNumberOfRowsDisplayed():$P{employeeBean}.getNumEmployeesInLastPage()):$P{employeeBean}.getMaxNumberOfRowsDisplayed()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Auto" pattern="#,##0.00#;(#,##0.00#-)">
+				<reportElement x="773" y="1" width="47" height="18" uuid="91e8c972-5b3b-407c-add5-265e6db1dad3">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{currentPageNumber} < $P{employeeBean}.getTotalPages()? $P{employeeBean}.getSubtotalPersonalShare().get($V{currentPageNumber}):""]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Auto" pattern="#,##0.00#;(#,##0.00#-)">
+				<reportElement x="824" y="1" width="47" height="18" uuid="e61b3984-4f8e-4401-bed1-754980d81014"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{currentPageNumber} < $P{employeeBean}.getTotalPages()? $P{employeeBean}.getSubtotalEmployerShare().get($V{currentPageNumber}):""]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Auto" pattern="#,##0.00#;(#,##0.00#-)">
+				<reportElement x="773" y="33" width="47" height="18" uuid="2648be73-3811-4005-a702-4a97c585df56">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[($V{currentPageNumber}+1) == $P{employeeBean}.getTotalPages()? $P{employeeBean}.getGrandTotalPS():""]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Auto" pattern="#,##0.00#;(#,##0.00#-)">
+				<reportElement x="825" y="34" width="45" height="18" uuid="a8f688f9-8f59-4c48-8bbd-eedd9c1dee85"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[($V{currentPageNumber}+1) == $P{employeeBean}.getTotalPages()? $P{employeeBean}.getGrandTotalES():""]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Auto" pattern="#,##0.00#;(#,##0.00#-)">
+				<reportElement x="773" y="18" width="97" height="18" uuid="6b6ad92c-68bc-4481-8d70-8c223630ef49">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{currentPageNumber} < $P{employeeBean}.getTotalPages()? ($P{employeeBean}.getSubtotalPersonalShare().get($V{currentPageNumber})+$P{employeeBean}.getSubtotalEmployerShare().get($V{currentPageNumber})):""]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Auto" pattern="#,##0.00#;(#,##0.00#-)">
+				<reportElement x="773" y="49" width="97" height="18" uuid="fd94b387-b454-4bf6-ae37-11ac07766f3c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[($V{currentPageNumber}+1) == $P{employeeBean}.getTotalPages()? ($P{employeeBean}.getGrandTotalES()+$P{employeeBean}.getGrandTotalPS()):""]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
